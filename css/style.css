@@ -61,16 +61,37 @@ html {
   box-sizing: inherit;
 }
 
+body {
+	font-family: 'PT Serif', serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: Futura, Helvetica, Arial, sans-serif;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 2px;
+	line-height: 2rem;
+}
+
+p {
+	font-size: 1.2rem;
+	line-height: 1.4rem;
+}
+
+/* Container Banner */
+
 .container {
 	position: relative;
 	height: 100vh;
 	width: 100vw;
-	background-image: url("images/backgroundOld.jpg");
+	background-color: black;
+	/* background-image: url("images/backgroundOld.jpg");
 	background-repeat: no-repeat;
-	background-size: cover;
-	margin: 0 auto;
+	background-size: cover; */
 	padding: 1rem;
 }
+
+/* Banner Logo */
 
 .section {
 	border: 2px double black;
@@ -83,7 +104,7 @@ html {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	font-size: 4rem;
-	font-family: serif;
+	color: white;
 }
 
 .container image {
@@ -94,26 +115,158 @@ html {
 	max-width: 30vw;
 }
 
+.section .logo {
+	height: 150px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	animation: opacityFade 5s;
+}
+
+.section .pointer {
+	height: 100px;
+	position: absolute;
+	left: 50%;
+	bottom: 2rem;
+	transform: translateX(-50%);
+	animation: bounce 1s infinite;
+}
+
+@keyframes opacityFade {
+	0%		{ opacity: 0; }
+	30%		{ opacity: 0; }
+	100%	{ opacity: 100; }
+}
+
+@-webkit-keyframes bounce {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes bounce {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+/* Map location */
+
 .map {
-	background-image: url("images/mapTest1.png");
+	background-color: black;
+	/* background-image: url("images/mapTest1.png");
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: cover; */
 	position: -webkit-sticky;
 	position: sticky;
 	top: -1px;
+	z-index: 50;
 }
 
 .wrapper {
 	position: relative;
-	width: 100vw;
-	height: 200vh;
 }
 
 .container-small {
-	position: absolute;
+	position: relative;
+	min-width: 300px;
 	width: 25vw;
-	height: 200vh;
-	right: 3rem;
+	max-width: 500px;
+	/* height: 300vh; */
+	left: 70vw;
+	top: -80vh;
+	background-color: #cbc3b2;
+	padding: 2rem;
+	z-index: 100;
+}
+
+video {
+	height: 100%;
+	width: 100%;
+}
+
+h2 {
+	font-size: 2rem;
+	color: black;
+	margin-bottom: 1rem;
+}
+
+p {
+	font-size: 1rem;
+	color: black;
+	margin-bottom: 1rem;
+}
+
+.thema {
+	margin-bottom: 4rem;
+}
+
+.krakers-beweging {
+	margin-bottom: 2rem;
+}
+
+.non-click {
+	position: absolute;
+	display: inline-block;
+	height: 100%;
 	top: 0;
-	background-color: limegreen;
+	left: 70vw;
+	width: 30vw;
+	background-color: transparent;
+	z-index: 51;
 }

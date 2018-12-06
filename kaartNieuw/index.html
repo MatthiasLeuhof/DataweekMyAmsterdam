@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/churches_1.js"></script>
+        <script src="data/krakers_2.js"></script>
+        <script src="data/others_3.js"></script>
+        <script src="data/stations_4.js"></script>
+        <script src="data/theaters_5.js"></script>
+        <script src="data/towers_6.js"></script>
+        <script src="data/war_7.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:18, minZoom:12
+        }).fitBounds([[52.35897468187066,4.858464862826788],[52.39500784030793,4.95697489016865]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_Oldcheese_0 = L.tileLayer('http://maps.georeferencer.com/georeferences/770457855792/2018-01-15T10:30:24.598882Z/map/{z}/{x}/{y}.png?key=aoZiKyJGmpqrBULwLBNe', {
+            opacity: 1.0
+        });
+        layer_Oldcheese_0.addTo(map);
+        map.addLayer(layer_Oldcheese_0);
+        function pop_churches_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_churches_1_0() {
+            return {
+                pane: 'pane_churches_1',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/place_of_worship_christian.svg',
+            iconSize: [22.799999999999997, 22.799999999999997]
+        }),
+            }
+        }
+        map.createPane('pane_churches_1');
+        map.getPane('pane_churches_1').style.zIndex = 401;
+        map.getPane('pane_churches_1').style['mix-blend-mode'] = 'normal';
+        var layer_churches_1 = new L.geoJson(json_churches_1, {
+            attribution: '',
+            pane: 'pane_churches_1',
+            onEachFeature: pop_churches_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_churches_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_churches_1);
+        map.addLayer(layer_churches_1);
+        function pop_krakers_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_krakers_2_0() {
+            return {
+                pane: 'pane_krakers_2',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/house.svg',
+            iconSize: [22.799999999999997, 22.799999999999997]
+        }),
+            }
+        }
+        map.createPane('pane_krakers_2');
+        map.getPane('pane_krakers_2').style.zIndex = 402;
+        map.getPane('pane_krakers_2').style['mix-blend-mode'] = 'normal';
+        var layer_krakers_2 = new L.geoJson(json_krakers_2, {
+            attribution: '',
+            pane: 'pane_krakers_2',
+            onEachFeature: pop_krakers_2,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_krakers_2_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_krakers_2);
+        map.addLayer(layer_krakers_2);
+        function pop_others_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_others_3_0() {
+            return {
+                pane: 'pane_others_3',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/background_security.svg',
+            iconSize: [22.799999999999997, 22.799999999999997]
+        }),
+            }
+        }
+        map.createPane('pane_others_3');
+        map.getPane('pane_others_3').style.zIndex = 403;
+        map.getPane('pane_others_3').style['mix-blend-mode'] = 'normal';
+        var layer_others_3 = new L.geoJson(json_others_3, {
+            attribution: '',
+            pane: 'pane_others_3',
+            onEachFeature: pop_others_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_others_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_others_3);
+        map.addLayer(layer_others_3);
+        function pop_stations_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_stations_4_0() {
+            return {
+                pane: 'pane_stations_4',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/railway=station.svg',
+            iconSize: [22.799999999999997, 22.799999999999997]
+        }),
+            }
+        }
+        map.createPane('pane_stations_4');
+        map.getPane('pane_stations_4').style.zIndex = 404;
+        map.getPane('pane_stations_4').style['mix-blend-mode'] = 'normal';
+        var layer_stations_4 = new L.geoJson(json_stations_4, {
+            attribution: '',
+            pane: 'pane_stations_4',
+            onEachFeature: pop_stations_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_stations_4_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_stations_4);
+        map.addLayer(layer_stations_4);
+        function pop_theaters_5(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_theaters_5_0() {
+            return {
+                pane: 'pane_theaters_5',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/theater.svg',
+            iconSize: [22.799999999999997, 22.799999999999997]
+        }),
+            }
+        }
+        map.createPane('pane_theaters_5');
+        map.getPane('pane_theaters_5').style.zIndex = 405;
+        map.getPane('pane_theaters_5').style['mix-blend-mode'] = 'normal';
+        var layer_theaters_5 = new L.geoJson(json_theaters_5, {
+            attribution: '',
+            pane: 'pane_theaters_5',
+            onEachFeature: pop_theaters_5,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_theaters_5_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_theaters_5);
+        map.addLayer(layer_theaters_5);
+        function pop_towers_6(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_towers_6_0() {
+            return {
+                pane: 'pane_towers_6',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/dungeon.svg',
+            iconSize: [22.799999999999997, 22.799999999999997]
+        }),
+            }
+        }
+        map.createPane('pane_towers_6');
+        map.getPane('pane_towers_6').style.zIndex = 406;
+        map.getPane('pane_towers_6').style['mix-blend-mode'] = 'normal';
+        var layer_towers_6 = new L.geoJson(json_towers_6, {
+            attribution: '',
+            pane: 'pane_towers_6',
+            onEachFeature: pop_towers_6,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_towers_6_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_towers_6);
+        map.addLayer(layer_towers_6);
+        function pop_war_7(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_war_7_0() {
+            return {
+                pane: 'pane_war_7',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/amenity=fire_station.svg',
+            iconSize: [22.799999999999997, 22.799999999999997]
+        }),
+            }
+        }
+        map.createPane('pane_war_7');
+        map.getPane('pane_war_7').style.zIndex = 407;
+        map.getPane('pane_war_7').style['mix-blend-mode'] = 'normal';
+        var layer_war_7 = new L.geoJson(json_war_7, {
+            attribution: '',
+            pane: 'pane_war_7',
+            onEachFeature: pop_war_7,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_war_7_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_war_7);
+        map.addLayer(layer_war_7);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/war_7.png" /> war': layer_war_7,'<img src="legend/towers_6.png" /> towers': layer_towers_6,'<img src="legend/theaters_5.png" /> theaters': layer_theaters_5,'<img src="legend/stations_4.png" /> stations': layer_stations_4,'<img src="legend/others_3.png" /> others': layer_others_3,'<img src="legend/krakers_2.png" /> krakers': layer_krakers_2,'<img src="legend/churches_1.png" /> churches': layer_churches_1,"Oldcheese": layer_Oldcheese_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
