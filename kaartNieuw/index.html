@@ -37,7 +37,7 @@
         <script src="data/war_7.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:18, minZoom:12
+            zoomControl:true, maxZoom:18, minZoom:15
         }).fitBounds([[52.35897468187066,4.858464862826788],[52.39500784030793,4.95697489016865]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
@@ -52,28 +52,22 @@
         function pop_churches_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                        <td colspan="2"><h3>' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</h3></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                        <td colspan="2"><h4>Bestond van: ' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + ' tot ' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</h4></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                        <td colspan="2"><h4>Reden van verdwijning: ' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : 'Niet gedefinieerd.') + '</h4></td>\
+                    </tr>\
+                    <tr>\
+                        <td><img src="' + feature.properties['img'] + '" alt="' + feature.properties['name'] + '"/></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><p>' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</p></td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -86,7 +80,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/place_of_worship_christian.svg',
-            iconSize: [22.799999999999997, 22.799999999999997]
+            iconSize: [35, 35]
         }),
             }
         }
@@ -110,28 +104,22 @@
         function pop_krakers_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                        <td colspan="2"><h3>' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</h3></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                        <td colspan="2"><h4>Bestond van: ' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + ' tot ' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</h4></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                        <td colspan="2"><h4>Reden van verdwijning: ' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : 'Niet gedefinieerd.') + '</h4></td>\
+                    </tr>\
+                    <tr>\
+                        <td><img src="' + feature.properties['img'] + '" alt="' + feature.properties['name'] + '"/></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><p>' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</p></td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -144,7 +132,7 @@
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/house.svg',
-            iconSize: [22.799999999999997, 22.799999999999997]
+            iconSize: [30, 30]
         }),
             }
         }
@@ -168,28 +156,22 @@
         function pop_others_3(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                        <td colspan="2"><h3>' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</h3></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                        <td colspan="2"><h4>Bestond van: ' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + ' tot ' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</h4></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                        <td colspan="2"><h4>Reden van verdwijning: ' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : 'Niet gedefinieerd.') + '</h4></td>\
+                    </tr>\
+                    <tr>\
+                        <td><img src="' + feature.properties['img'] + '" alt="' + feature.properties['name'] + '"/></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><p>' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</p></td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -226,28 +208,22 @@
         function pop_stations_4(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                        <td colspan="2"><h3>' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</h3></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                        <td colspan="2"><h4>Bestond van: ' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + ' tot ' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</h4></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                        <td colspan="2"><h4>Reden van verdwijning: ' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : 'Niet gedefinieerd.') + '</h4></td>\
+                    </tr>\
+                    <tr>\
+                        <td><img src="' + feature.properties['img'] + '" alt="' + feature.properties['name'] + '"/></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><p>' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</p></td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -284,28 +260,22 @@
         function pop_theaters_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                        <td colspan="2"><h3>' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</h3></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                        <td colspan="2"><h4>Bestond van: ' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + ' tot ' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</h4></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                        <td colspan="2"><h4>Reden van verdwijning: ' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : 'Niet gedefinieerd.') + '</h4></td>\
+                    </tr>\
+                    <tr>\
+                        <td><img src="' + feature.properties['img'] + '" alt="' + feature.properties['name'] + '"/></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><p>' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</p></td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -342,28 +312,22 @@
         function pop_towers_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                        <td colspan="2"><h3>' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</h3></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                        <td colspan="2"><h4>Bestond van: ' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + ' tot ' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</h4></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                        <td colspan="2"><h4>Reden van verdwijning: ' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : 'Niet gedefinieerd.') + '</h4></td>\
+                    </tr>\
+                    <tr>\
+                        <td><img src="' + feature.properties['img'] + '" alt="' + feature.properties['name'] + '"/></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><p>' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</p></td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -400,28 +364,22 @@
         function pop_war_7(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                        <td colspan="2"><h3>' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</h3></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? Autolinker.link(String(feature.properties['name'])) : '') + '</td>\
+                        <td colspan="2"><h4>Bestond van: ' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + ' tot ' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</h4></td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                        <td colspan="2"><h4>Reden van verdwijning: ' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : 'Niet gedefinieerd.') + '</h4></td>\
+                    </tr>\
+                    <tr>\
+                        <td><img src="' + feature.properties['img'] + '" alt="' + feature.properties['name'] + '"/></td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><p>' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</p></td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['wiki'] !== null ? Autolinker.link(String(feature.properties['wiki'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['start'] !== null ? Autolinker.link(String(feature.properties['start'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['cause'] !== null ? Autolinker.link(String(feature.properties['cause'])) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['img'] !== null ? Autolinker.link(String(feature.properties['img'])) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});

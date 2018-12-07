@@ -22,10 +22,27 @@
             background: #fff;
             padding-right: 10px;
         }
+
+
         .leaflet-popup-content {
-            width:auto !important;
-            padding-right:10px;
+                    width: 300px;
+                }
+
+        .leaflet-popup-content * {
+            width: 300px;
+            margin: 0;
         }
+
+        .leaflet-popup-content h3 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .leaflet-popup-content img {
+            width: 100%;
+        }
+
+
         .leaflet-tooltip {
             background: none;
             box-shadow: none;

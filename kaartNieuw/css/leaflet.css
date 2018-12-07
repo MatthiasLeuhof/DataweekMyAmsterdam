@@ -126,13 +126,15 @@
 	top: 0;
 	}
 .leaflet-right {
-	right: 0;
+	left: 10px;
 	}
 .leaflet-bottom {
 	bottom: 0;
+	display: none;
 	}
 .leaflet-left {
 	left: 0;
+	top: 60px;
 	}
 .leaflet-control {
 	float: left;
